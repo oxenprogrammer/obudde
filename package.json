@@ -4,7 +4,11 @@
   "description": "The Weather App",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:build": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write 'src/**/*.{js,ts,tsx}'",
+    "deploy": "yarn webpack --mode production && git subtree push --prefix dist  -f origin gh-pages"
   },
   "keywords": [
     "Weather",
@@ -17,5 +21,30 @@
     "Promises"
   ],
   "author": "Emanuel Okello",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.2",
+    "prettier": "2.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.19.0",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.5",
+    "html-webpack-plugin": "^5.3.1",
+    "sass": "^1.33.0",
+    "sass-loader": "^11.1.1",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack-dev-server": "^3.11.2"
+  }
 }
