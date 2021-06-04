@@ -1,0 +1,21 @@
+{
+  "name": "obudde",
+  "version": "1.0.0",
+  "description": "The Weather App",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Weather",
+    "Webpack",
+    "ES6",
+    "JavaScript",
+    "DOM",
+    "API",
+    "Async",
+    "Promises"
+  ],
+  "author": "Emanuel Okello",
+  "license": "MIT"
+}
