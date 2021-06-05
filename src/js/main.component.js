@@ -1,4 +1,4 @@
-import searchForm from './form.compoent';
+import weatherUI from './weather-ui.component';
 
 const main = () => {
   const { body } = document;
@@ -6,7 +6,7 @@ const main = () => {
   const mainBody = document.createElement('main');
   mainBody.setAttribute('class', 'container');
 
-  mainBody.appendChild(searchForm());
+  mainBody.appendChild(weatherUI());
   body.appendChild(mainBody);
   return body;
 };
