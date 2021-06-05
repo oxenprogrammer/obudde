@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-import regeneratorRuntime from 'regenerator-runtime';
-
 const getWeather = async (url) => {
   try {
     const response = await fetch(url);
