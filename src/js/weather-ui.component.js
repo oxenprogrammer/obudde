@@ -1,6 +1,7 @@
 import * as config from '../../config.json';
 
 import getWeather from './weather.service';
+import weatherBackground from './weather-background.component';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -41,6 +42,7 @@ const weatherUI = () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputName.value}&appid=${config.APP_ID}`;
     const weather = await getWeather(url);
     console.log(weather);
+    weatherBackground(weather.weather[0].main.toLowerCase());
     paragraph.textContent = JSON.stringify(weather);
     imgWeather.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
     result.appendChild(imgWeather);
