@@ -17,6 +17,9 @@ const weatherUI = () => {
   const paragraph = document.createElement('p');
   result.appendChild(paragraph);
 
+  const imgWeather = document.createElement('img');
+  imgWeather.setAttribute('class', 'weather-image');
+
   const form = document.createElement('form');
   form.setAttribute('class', 'form');
 
@@ -39,6 +42,8 @@ const weatherUI = () => {
     const weather = await getWeather(url);
     console.log(weather);
     paragraph.textContent = JSON.stringify(weather);
+    imgWeather.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
+    result.appendChild(imgWeather);
   });
 
   form.appendChild(inputName);
