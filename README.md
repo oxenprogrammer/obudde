@@ -32,7 +32,7 @@ To get a local copy up and running follow these simple example steps.
 - Clone this repository using the link above (click on the 'code' button)
 
 - open a terminal and `cd` to the cloned repository
-- Create a `config.json` file and add it to the root of the project. See `config.example.json` for illustration.
+- Replace `config.example.json` value with your open weather API key, otherwise it will fail.
 - run `yarn` to install the dependencies
 - run `yarn run dev:build` to run in `development mode` or `yarn run build` to run in `production mode`
 It should open the server on port 8080 on localhost
