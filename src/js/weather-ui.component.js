@@ -75,7 +75,7 @@ const weatherUI = () => {
     desc.textContent = `${weather.weather[0].description}`;
     temp.textContent = `${weather.main.temp}°C`;
     inputToggle.addEventListener('change', () => {
-      if (inputToggle.checked) {
+      if (!inputToggle.checked) {
         temp.textContent = `${celsiusToFahrenheit(weather.main.temp)}°F`;
       } else {
         temp.textContent = `${weather.main.temp}°C`;
