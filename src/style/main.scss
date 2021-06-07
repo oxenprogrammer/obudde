@@ -32,3 +32,11 @@ body {
 .backgroundImage {
   object-fit: cover;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 16rem 0 0 0;
+  font-size: 1.6rem;
+}

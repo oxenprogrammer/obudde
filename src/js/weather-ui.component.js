@@ -5,7 +5,7 @@ import weatherBackground from './weather-background.component';
 
 const weatherUI = () => {
   const formSection = document.createElement('section');
-  formSection.setAttribute('class', 'section-form');
+  formSection.setAttribute('class', 'weatherSection');
 
   const formArticle = document.createElement('article');
   formArticle.setAttribute('class', 'article-form');
