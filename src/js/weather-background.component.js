@@ -7,16 +7,13 @@ const weatherBackground = (weatherType) => {
   const backgroundImg = document.createElement('div');
   backgroundImg.setAttribute('class', 'backgroundImage');
   if (weatherType === 'rain') {
-    backgroundImg.setAttribute('src', rainy);
-    body.appendChild(backgroundImg);
+    body.style.backgroundImage = `url("${rainy}")`;
     console.log('rainy');
   } if (weatherType === 'clouds') {
-    backgroundImg.setAttribute('src', cloudy);
-    body.appendChild(backgroundImg);
+    body.style.backgroundImage = `url("${cloudy}")`;
     console.log('cloudy');
   } if (weatherType === 'clear') {
-    backgroundImg.setAttribute('src', sunny);
-    body.appendChild(backgroundImg);
+    body.style.backgroundImage = `url("${sunny}")`;
     console.log('sunny');
   }
 };
