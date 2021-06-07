@@ -15,7 +15,7 @@ Obudde is a Luganda word for Weather. This project demonstrate
 
 ## Live Demo
 
-Check the [live version]() of the app!
+Check the [live version](http://emanuel-okello.me/obudde/) of the app!
 
 
 ## Getting Started
@@ -32,8 +32,9 @@ To get a local copy up and running follow these simple example steps.
 - Clone this repository using the link above (click on the 'code' button)
 
 - open a terminal and `cd` to the cloned repository
+- Create a `config.json` file and add it to the root of the project. See `config.example.json` for illustration.
 - run `yarn` to install the dependencies
-- run `npm run dev:build` to run in `development mode` or `npm run build` to run in `production mode`
+- run `yarn run dev:build` to run in `development mode` or `yarn run build` to run in `production mode`
 It should open the server on port 8080 on localhost
 
 
@@ -50,7 +51,7 @@ It should open the server on port 8080 on localhost
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page]().
+Feel free to check the [issues page](https://github.com/oxenprogrammer/obudde/issues).
 
 ## Show your support
 
