@@ -1,4 +1,4 @@
-import * as config from '../../config.json';
+import * as config from '../../config.example.json';
 
 import { celsiusToFahrenheit } from './temp-converter';
 import getWeather from './weather.service';
