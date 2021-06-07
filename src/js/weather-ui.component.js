@@ -1,5 +1,6 @@
 import * as config from '../../config.json';
 
+import { celsiusToFahrenheit } from './temp-converter';
 import getWeather from './weather.service';
 import weatherBackground from './weather-background.component';
 
@@ -46,6 +47,20 @@ const weatherUI = () => {
   inputName.setAttribute('maxlength', '30');
   inputName.setAttribute('required', true);
 
+  const labelToggle = document.createElement('label');
+  labelToggle.setAttribute('class', 'switch');
+
+  const inputToggle = document.createElement('input');
+  inputToggle.setAttribute('type', 'checkbox');
+  inputToggle.setAttribute('class', 'checkbox');
+  inputToggle.setAttribute('checked', true);
+
+  const spanToggle = document.createElement('span');
+  spanToggle.setAttribute('class', 'slider round');
+
+  labelToggle.appendChild(inputToggle);
+  labelToggle.appendChild(spanToggle);
+
   const submitButton = document.createElement('input');
   submitButton.setAttribute('type', 'submit');
   inputName.setAttribute('name', 'search');
@@ -53,16 +68,25 @@ const weatherUI = () => {
 
   submitButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputName.value}&appid=${config.APP_ID}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputName.value}&appid=${config.APP_ID}&units=metric`;
     const weather = await getWeather(url);
     weatherBackground(weather.weather[0].main.toLowerCase());
-    mainWeather.textContent = `Main: ${weather.weather[0].main}`;
-    desc.textContent = `Description: ${weather.weather[0].description}`;
-    temp.textContent = `Temp: ${weather.main.temp}`;
-    city.textContent = `City: ${weather.name} Country: ${weather.sys.country}`;
+    mainWeather.textContent = `${weather.weather[0].main}`;
+    desc.textContent = `${weather.weather[0].description}`;
+    temp.textContent = `${weather.main.temp}°C`;
+    inputToggle.addEventListener('change', () => {
+      if (inputToggle.checked) {
+        temp.textContent = `${celsiusToFahrenheit(weather.main.temp)}°F`;
+      } else {
+        temp.textContent = `${weather.main.temp}°C`;
+      }
+    });
+    // temp.textContent = `${weather.main.temp}`;
+    city.textContent = `${weather.name} ${weather.sys.country}`;
     imgWeather.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
     image.appendChild(imgWeather);
 
+    weatherContent.appendChild(labelToggle);
     weatherContent.appendChild(image);
     weatherContent.appendChild(mainWeather);
     weatherContent.appendChild(desc);
