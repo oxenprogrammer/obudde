@@ -70,28 +70,40 @@ const weatherUI = () => {
     e.preventDefault();
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputName.value}&appid=${config.APP_ID}&units=metric`;
     const weather = await getWeather(url);
-    weatherBackground(weather.weather[0].main.toLowerCase());
-    mainWeather.textContent = `${weather.weather[0].main}`;
-    desc.textContent = `${weather.weather[0].description}`;
-    temp.textContent = `${weather.main.temp}°C`;
-    inputToggle.addEventListener('change', () => {
-      if (!inputToggle.checked) {
-        temp.textContent = `${celsiusToFahrenheit(weather.main.temp)}°F`;
-      } else {
-        temp.textContent = `${weather.main.temp}°C`;
-      }
-    });
-    // temp.textContent = `${weather.main.temp}`;
-    city.textContent = `${weather.name} ${weather.sys.country}`;
-    imgWeather.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
-    image.appendChild(imgWeather);
 
-    weatherContent.appendChild(labelToggle);
-    weatherContent.appendChild(image);
-    weatherContent.appendChild(mainWeather);
-    weatherContent.appendChild(desc);
-    weatherContent.appendChild(temp);
-    weatherContent.appendChild(city);
+    if (weather.name !== undefined || null) {
+      weatherContent.innerHTML = '';
+      weatherBackground(weather.weather[0].main.toLowerCase());
+      mainWeather.textContent = `${weather.weather[0].main}`;
+      desc.textContent = `${weather.weather[0].description}`;
+      temp.textContent = `${weather.main.temp}°C`;
+
+      inputToggle.addEventListener('change', () => {
+        if (!inputToggle.checked) {
+          temp.textContent = `${celsiusToFahrenheit(weather.main.temp)}°F`;
+        } else {
+          temp.textContent = `${weather.main.temp}°C`;
+        }
+      });
+
+      city.textContent = `${weather.name} ${weather.sys.country}`;
+      imgWeather.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
+      image.appendChild(imgWeather);
+
+      weatherContent.appendChild(labelToggle);
+      weatherContent.appendChild(image);
+      weatherContent.appendChild(mainWeather);
+      weatherContent.appendChild(desc);
+      weatherContent.appendChild(temp);
+      weatherContent.appendChild(city);
+    } else {
+      weatherContent.innerHTML = '';
+      weatherBackground('notfound');
+      const errorMessage = document.createElement('h3');
+      errorMessage.setAttribute('class', 'error-message');
+      errorMessage.textContent = `${weather.cod} ${weather.message}`;
+      weatherContent.appendChild(errorMessage);
+    }
   });
 
   form.appendChild(inputName);

@@ -1,4 +1,5 @@
 import cloudy from '../img/css-cloud.gif';
+import normal from '../img/clear.webp';
 import rainy from '../img/rain.gif';
 import sunny from '../img/sunny.gif';
 
@@ -12,6 +13,8 @@ const weatherBackground = (weatherType) => {
     body.style.backgroundImage = `url("${cloudy}")`;
   } if (weatherType === 'clear') {
     body.style.backgroundImage = `url("${sunny}")`;
+  } if (weatherType === 'notfound') {
+    body.style.backgroundImage = `url("${normal}")`;
   }
 };
 
