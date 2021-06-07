@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Hind&display=swap');
+
 // global resets
 * {
   padding: 0;
@@ -39,4 +42,90 @@ body {
   align-content: center;
   padding: 16rem 0 0 0;
   font-size: 1.6rem;
+}
+
+.weatherSection {
+  display: inherit;
+  flex-direction: column;
+
+  .article-form {
+    -webkit-font-smoothing: antialiased;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: grid;
+    height: 100%;
+    grid-template: 1fr/100%;
+    place-items: center;
+    border-radius: 0.4rem;
+
+    &:hover {
+      box-shadow:
+        0 8px 8px 8px rgba(0, 0, 0, 0.2),
+        0 8px 8px 0 rgba(0, 0, 0, 0.14),
+        0 8px 8px 0 rgba(0, 0, 0, 0.12) !important;
+      transform: translate3d(0, 0, 0);
+      transition:
+        background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .weather-content {
+      .paragraph {
+        align-self: center;
+        text-align: center;
+        font-size: 2rem;
+        color: #000;
+
+        img {
+          width: 32rem;
+        }
+
+        &:last-child {
+          padding-bottom: 2rem;
+        }
+      }
+    }
+
+    .form {
+      color: #acbdce;
+      padding: 1rem;
+      border-radius: 0.6rem;
+
+      input {
+        height: 4rem;
+        margin: 0 0.5rem;
+        padding: 1rem;
+      }
+
+      .city-name {
+        border-radius: 0.3rem;
+        background-color: #a3acb4;
+        border: none;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 600;
+        color: #a9b8c9;
+        -webkit-appearance: none;
+        transition: all 240ms ease-out;
+
+        &::placeholder {
+          color: #6d7f8f;
+        }
+
+        &:focus {
+          outline: none;
+          color: #6d7f8f;
+          background-color: #e3edf7;
+        }
+      }
+
+      .submit {
+        cursor: pointer;
+        background-color: #3595cc;
+        border: none;
+        border-radius: 0.4rem;
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.8rem;
+      }
+    }
+  }
 }

@@ -41,6 +41,7 @@ const weatherUI = () => {
   const inputName = document.createElement('input');
   inputName.setAttribute('type', 'text');
   inputName.setAttribute('name', 'name');
+  inputName.setAttribute('class', 'city-name');
   inputName.setAttribute('placeholder', 'Enter City Name . . .');
   inputName.setAttribute('maxlength', '30');
   inputName.setAttribute('required', true);
