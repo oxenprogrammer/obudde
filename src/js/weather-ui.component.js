@@ -53,10 +53,8 @@ const weatherUI = () => {
 
   submitButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    console.log('value: ', inputName.value);
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputName.value}&appid=${config.APP_ID}`;
     const weather = await getWeather(url);
-    console.log(weather);
     weatherBackground(weather.weather[0].main.toLowerCase());
     mainWeather.textContent = `Main: ${weather.weather[0].main}`;
     desc.textContent = `Description: ${weather.weather[0].description}`;

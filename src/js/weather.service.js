@@ -4,7 +4,7 @@ const getWeather = async (url) => {
     const result = await response.json();
     return result;
   } catch (error) {
-    return console.log(error.message);
+    return error.message;
   }
 };
 
