@@ -3,8 +3,6 @@ import * as config from '../../config.json';
 import getWeather from './weather.service';
 import weatherBackground from './weather-background.component';
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 const weatherUI = () => {
   const formSection = document.createElement('section');
   formSection.setAttribute('class', 'section-form');
@@ -15,8 +13,24 @@ const weatherUI = () => {
   const result = document.createElement('article');
   result.setAttribute('class', 'result');
 
-  const paragraph = document.createElement('p');
-  result.appendChild(paragraph);
+  const weatherContent = document.createElement('div');
+  weatherContent.setAttribute('class', 'weather-content');
+  result.appendChild(weatherContent);
+
+  const mainWeather = document.createElement('p');
+  mainWeather.setAttribute('class', 'paragraph');
+
+  const desc = document.createElement('p');
+  desc.setAttribute('class', 'paragraph');
+
+  const city = document.createElement('p');
+  city.setAttribute('class', 'paragraph');
+
+  const temp = document.createElement('p');
+  temp.setAttribute('class', 'paragraph');
+
+  const image = document.createElement('p');
+  image.setAttribute('class', 'paragraph');
 
   const imgWeather = document.createElement('img');
   imgWeather.setAttribute('class', 'weather-image');
@@ -43,15 +57,24 @@ const weatherUI = () => {
     const weather = await getWeather(url);
     console.log(weather);
     weatherBackground(weather.weather[0].main.toLowerCase());
-    paragraph.textContent = JSON.stringify(weather);
+    mainWeather.textContent = `Main: ${weather.weather[0].main}`;
+    desc.textContent = `Description: ${weather.weather[0].description}`;
+    temp.textContent = `Temp: ${weather.main.temp}`;
+    city.textContent = `City: ${weather.name} Country: ${weather.sys.country}`;
     imgWeather.setAttribute('src', `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`);
-    result.appendChild(imgWeather);
+    image.appendChild(imgWeather);
+
+    weatherContent.appendChild(image);
+    weatherContent.appendChild(mainWeather);
+    weatherContent.appendChild(desc);
+    weatherContent.appendChild(temp);
+    weatherContent.appendChild(city);
   });
 
   form.appendChild(inputName);
   form.appendChild(submitButton);
   formArticle.appendChild(form);
-  sleep(5000);
+
   formArticle.appendChild(result);
   formSection.appendChild(formArticle);
 
